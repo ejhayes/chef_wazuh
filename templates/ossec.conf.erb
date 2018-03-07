@@ -52,7 +52,6 @@
     <timeout><%= @config['wodle']['open-scap']['timeout'] %></timeout>
     <interval><%= @config['wodle']['open-scap']['interval'] %></interval>
     <scan-on-start><%= @config['wodle']['open-scap']['scan_on_start'] ? 'yes' : 'no' %></scan-on-start>
-
     <% unless @config['wodle']['open-scap']['contents'].nil? %>
       <% @config['wodle']['open-scap']['contents'].each do |content| %>
         <% if content[:profiles].empty? %>
@@ -99,8 +98,7 @@
     <!-- Check the file, but never compute the diff -->
     <nodiff><%= @config['syscheck']['nodiff'] %></nodiff>
 
-    <skip_nfs>
-      <%= @config['syscheck']['skip_nfs'] ? 'yes' : 'no' %></skip_nfs>
+    <skip_nfs><%= @config['syscheck']['skip_nfs'] ? 'yes' : 'no' %></skip_nfs>
   </syscheck>
 
   <!-- Log analysis -->
