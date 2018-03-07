@@ -18,7 +18,7 @@ if %w(debian ubuntu redhat centos).include? node['platform']
   else
 
     config_platform = node['platform'].equal?('redhat') ? node['platform_family'] : node['platform']
-    ossec_conf_path = node['chef_wazuh']['agent']['ossec']['conf_path']
+    ossec_conf_path = node['chef_wazuh']['agent']['ossec_conf_path']
 
     ossec_config = node['chef_wazuh']['agent']['ossec_config']
     client_config_profile = []
