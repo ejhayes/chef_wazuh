@@ -8,7 +8,7 @@
     <server>
       <address><%= @config['client']['server']['address'] %></address>
       <port><%= @config['client']['server']['port'] %></port>
-      <protocol><%= @ossec_protocol %></protocol>
+      <protocol><%= @client_server_protocol %></protocol>
     </server>
     <config-profile><%= @client_config_profile %></config-profile>
     <notify_time><%= @config['client']['notify_time'] %></notify_time>
