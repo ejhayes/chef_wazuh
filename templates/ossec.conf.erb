@@ -10,41 +10,30 @@
       <port><%= @config['client']['server']['port'] %></port>
       <protocol><%= @ossec_protocol %></protocol>
     </server>
-    <config-profile><%= @ossec_config_profile %></config-profile>
+    <config-profile><%= @client_config_profile %></config-profile>
     <notify_time><%= @config['client']['notify_time'] %></notify_time>
     <time-reconnect><%= @config['client']['time_reconnect'] %></time-reconnect>
-    <auto_restart>
-      <% @config['client']['auto_restart'] ? 'yes' : 'no' %></auto_restart>
+    <auto_restart><%= @config['client']['auto_restart'] ? 'yes' : 'no' %></auto_restart>
   </client>
 
   <client_buffer>
     <!-- Agent buffer options -->
-    <disabled>
-      <% @config['client_buffer']['disabled'] ? 'yes' : 'no' %></disabled>
+    <disabled><%= @config['client_buffer']['disabled'] ? 'yes' : 'no' %></disabled>
     <queue_size><%= @config['client_buffer']['queue_size'] %></queue_size>
     <events_per_second><%= @config['client_buffer']['events_per_second'] %></events_per_second>
   </client_buffer>
 
   <!-- Policy monitoring -->
   <rootcheck>
-    <disabled>
-      <% @config['rootcheck']['disabled'] ? 'yes' : 'no' %></disabled>
-    <check_unixaudit>
-      <% @config['rootcheck']['check_unixaudit'] ? 'yes' : 'no' %></check_unixaudit>
-    <check_files>
-      <% @config['rootcheck']['check_files'] ? 'yes' : 'no' %></check_files>
-    <check_trojans>
-      <% @config['rootcheck']['check_trojans'] ? 'yes' : 'no' %></check_trojans>
-    <check_dev>
-      <% @config['rootcheck']['check_dev'] ? 'yes' : 'no' %></check_dev>
-    <check_sys>
-      <% @config['rootcheck']['check_sys'] ? 'yes' : 'no' %></check_sys>
-    <check_pids>
-      <% @config['rootcheck']['check_pids'] ? 'yes' : 'no' %></check_pids>
-    <check_ports>
-      <% @config['rootcheck']['check_ports'] ? 'yes' : 'no' %></check_ports>
-    <check_if>
-      <% @config['rootcheck']['check_if'] ? 'yes' : 'no' %></check_if>
+    <disabled><%= @config['rootcheck']['disabled'] ? 'yes' : 'no' %></disabled>
+    <check_unixaudit><%= @config['rootcheck']['check_unixaudit'] ? 'yes' : 'no' %></check_unixaudit>
+    <check_files><%= @config['rootcheck']['check_files'] ? 'yes' : 'no' %></check_files>
+    <check_trojans><%= @config['rootcheck']['check_trojans'] ? 'yes' : 'no' %></check_trojans>
+    <check_dev><%= @config['rootcheck']['check_dev'] ? 'yes' : 'no' %></check_dev>
+    <check_sys><%= @config['rootcheck']['check_sys'] ? 'yes' : 'no' %></check_sys>
+    <check_pids><%= @config['rootcheck']['check_pids'] ? 'yes' : 'no' %></check_pids>
+    <check_ports><%= @config['rootcheck']['check_ports'] ? 'yes' : 'no' %></check_ports>
+    <check_if><%= @config['rootcheck']['check_if'] ? 'yes' : 'no' %></check_if>
 
     <frequency><%= @config['rootcheck']['frequency'] %></frequency>
 
@@ -55,17 +44,14 @@
       <system_audit><%= system_audit %></system_audit>
     <% end %>
 
-    <skip_nfs>
-      <% @config['rootcheck']['skip_nfs'] ? 'yes' : 'no' %></skip_nfs>
+    <skip_nfs><%= @config['rootcheck']['skip_nfs'] ? 'yes' : 'no' %></skip_nfs>
   </rootcheck>
 
   <wodle name="open-scap">
-    <disabled>
-      <% @config['wodle']['open-scap']['disabled'] ? 'yes' : 'no' %></disabled>
+    <disabled><%= @config['wodle']['open-scap']['disabled'] ? 'yes' : 'no' %></disabled>
     <timeout><%= @config['wodle']['open-scap']['timeout'] %></timeout>
     <interval><%= @config['wodle']['open-scap']['interval'] %></interval>
-    <scan-on-start>
-      <% @config['wodle']['open-scap']['scan_on_start'] ? 'yes' : 'no' %></scan-on-start>
+    <scan-on-start><%= @config['wodle']['open-scap']['scan_on_start'] ? 'yes' : 'no' %></scan-on-start>
 
     <% unless @config['wodle']['open-scap']['contents'].nil? %>
       <% @config['wodle']['open-scap']['contents'].each do |content| %>
@@ -83,12 +69,10 @@
   </wodle>
 
   <wodle name="cis-cat">
-    <disabled>
-      <% @config['wodle']['cis-cat']['disabled'] ? 'yes' : 'no' %></disabled>
+    <disabled><%= @config['wodle']['cis-cat']['disabled'] ? 'yes' : 'no' %></disabled>
     <timeout><%= @config['wodle']['cis-cat']['timeout'] %></timeout>
     <interval><%= @config['wodle']['cis-cat']['interval'] %></interval>
-    <scan-on-start>
-      <% @config['wodle']['cis-cat']['scan_on_start'] ? 'yes' : 'no' %></scan-on-start>
+    <scan-on-start><%= @config['wodle']['cis-cat']['scan_on_start'] ? 'yes' : 'no' %></scan-on-start>
 
     <java_path><%= @config['wodle']['cis-cat']['java_path'] %></java_path>
     <ciscat_path><%= @config['wodle']['cis-cat']['ciscat_path'] %></ciscat_path>
@@ -96,20 +80,15 @@
 
   <!-- File integrity monitoring -->
   <syscheck>
-    <disabled>
-      <% @config['syscheck']['disabled'] ? 'yes' : 'no' %></disabled>
+    <disabled><%= @config['syscheck']['disabled'] ? 'yes' : 'no' %></disabled>
 
     <frequency><%= @config['syscheck']['frequency'] %></frequency>
 
-    <scan_on_start>
-      <% @config['syscheck']['scan_on_start'] ? 'yes' : 'no' %></scan_on_start>
+    <scan_on_start><%= @config['syscheck']['scan_on_start'] ? 'yes' : 'no' %></scan_on_start>
 
     <!-- Directories to check  (perform all possible verifications) -->
     <% @config['syscheck']['directories'].each do |directory| %>
-      <directories check_all="
-        <% directory[:check_all] ? 'yes' : 'no' %>">
-        <%= directory[:content].join(',') %>
-      </directories>
+      <directories check_all="<%= directory[:check_all] ? 'yes' : 'no' %>"><%= directory[:content].join(',') %></directories>
     <% end %>
 
     <!-- Files/directories to ignore -->
@@ -121,7 +100,7 @@
     <nodiff><%= @config['syscheck']['nodiff'] %></nodiff>
 
     <skip_nfs>
-      <% @config['syscheck']['skip_nfs'] ? 'yes' : 'no' %></skip_nfs>
+      <%= @config['syscheck']['skip_nfs'] ? 'yes' : 'no' %></skip_nfs>
   </syscheck>
 
   <!-- Log analysis -->
@@ -138,8 +117,7 @@
 
   <!-- Active response -->
   <active-response>
-    <disabled>
-      <% @config['active_response']['disabled'] ? 'yes' : 'no' %></disabled>
+    <disabled><%= @config['active_response']['disabled'] ? 'yes' : 'no' %></disabled>
     <ca_store><%= @config['active_response']['ca_store'] %></ca_store>
   </active-response>
 
