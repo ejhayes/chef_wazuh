@@ -4,7 +4,7 @@ maintainer_email 'markea125@gmail.com'
 license 'MIT'
 description 'Installs and configures Wazuh on Linux.'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version '0.1.2'
+version '0.1.3'
 chef_version '>= 12.1' if respond_to?(:chef_version)
 supports 'ubuntu', '>= 16.04'
 supports 'debian', '>= 7.0'

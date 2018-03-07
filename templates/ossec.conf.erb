@@ -67,15 +67,17 @@
     <scan-on-start>
       <% @config['wodle']['open-scap']['scan_on_start'] ? 'yes' : 'no' %></scan-on-start>
 
-    <% @config['wodle']['open-scap']['contents'].each do |content| %>
-      <% if content[:profiles].empty? %>
-        <content type="<%= content[:type] %>" path="<%= content[:path] %>"/>
-      <% else %>
-        <content type="<%= content[:type] %>" path="<%= content[:path] %>">
-          <% content[:profiles].each do |profile| %>
-            <profile><%= profile %></profile>
-          <% end %>
-        </content>
+    <% unless @config['wodle']['open-scap']['contents'].nil? %>
+      <% @config['wodle']['open-scap']['contents'].each do |content| %>
+        <% if content[:profiles].empty? %>
+          <content type="<%= content[:type] %>" path="<%= content[:path] %>"/>
+        <% else %>
+          <content type="<%= content[:type] %>" path="<%= content[:path] %>">
+            <% content[:profiles].each do |profile| %>
+              <profile><%= profile %></profile>
+            <% end %>
+          </content>
+        <% end %>
       <% end %>
     <% end %>
   </wodle>
