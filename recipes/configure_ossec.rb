@@ -57,7 +57,7 @@ if %w(debian ubuntu redhat centos).include? node['platform']
           client_server_protocol: client_server_protocol
       )
       notifies :restart, 'service[wazuh-agent]', :delayed
-      action :update
+      action :create
     end
 
   end
