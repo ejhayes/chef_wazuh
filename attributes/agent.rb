@@ -1,6 +1,8 @@
 default['chef_wazuh']['agent']['ossec_conf_path'] = '/var/ossec/etc/ossec.conf'
 default['chef_wazuh']['agent']['server'] = nil
 
+default['chef_wazuh']['agent']['ossec_config']['labels'] = nil
+
 default['chef_wazuh']['agent']['ossec_config']['client']['server']['address'] = nil
 default['chef_wazuh']['agent']['ossec_config']['client']['server']['port'] = 1514
 default['chef_wazuh']['agent']['ossec_config']['client']['server']['protocol'] = 'udp'
@@ -120,6 +122,24 @@ default['chef_wazuh']['agent']['ossec_config']['syscheck']['ignores'] = [
 ]
 default['chef_wazuh']['agent']['ossec_config']['syscheck']['nodiff'] = '/etc/ssl/private.key'
 default['chef_wazuh']['agent']['ossec_config']['syscheck']['skip_nfs'] = true
+
+default['chef_wazuh']['agent']['ossec_config']['wodle']['syscollector']['disabled'] = true
+default['chef_wazuh']['agent']['ossec_config']['wodle']['syscollector']['interval'] = '1h'
+default['chef_wazuh']['agent']['ossec_config']['wodle']['syscollector']['scan_on_start'] = false
+default['chef_wazuh']['agent']['ossec_config']['wodle']['syscollector']['hardware'] = false
+default['chef_wazuh']['agent']['ossec_config']['wodle']['syscollector']['os'] = false
+default['chef_wazuh']['agent']['ossec_config']['wodle']['syscollector']['network'] = false
+default['chef_wazuh']['agent']['ossec_config']['wodle']['syscollector']['packages'] = false
+default['chef_wazuh']['agent']['ossec_config']['wodle']['syscollector']['ports'] = false
+default['chef_wazuh']['agent']['ossec_config']['wodle']['syscollector']['processes'] = false
+
+default['chef_wazuh']['agent']['ossec_config']['wodle']['osquery']['disabled'] = true
+default['chef_wazuh']['agent']['ossec_config']['wodle']['osquery']['run_daemon'] = true
+default['chef_wazuh']['agent']['ossec_config']['wodle']['osquery']['bin_path'] = nil
+default['chef_wazuh']['agent']['ossec_config']['wodle']['osquery']['log_path'] = '/var/log/osquery/osqueryd.results.log'
+default['chef_wazuh']['agent']['ossec_config']['wodle']['osquery']['config_path'] = '/etc/osquery/osquery.conf'
+default['chef_wazuh']['agent']['ossec_config']['wodle']['osquery']['add_labels'] = true
+default['chef_wazuh']['agent']['ossec_config']['wodle']['osquery']['pack'] = nil
 
 default['chef_wazuh']['agent']['ossec_config']['log_analysis']['localfiles'] = [
     {

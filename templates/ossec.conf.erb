@@ -23,6 +23,15 @@
     <events_per_second><%= @config['client_buffer']['events_per_second'] %></events_per_second>
   </client_buffer>
 
+  <!-- Labels -->
+  <% if @config['labels'] %>
+  <labels>
+    <% @config['labels'].each do |label| %>
+      <label key="<%= label['key'] %>" hidden="<%= label.fetch('hidden', false) ? 'yes' : 'no' %>"><%= label['value'] %></label>
+    <% end %>
+  </labels>
+  <% end %>
+
   <!-- Policy monitoring -->
   <rootcheck>
     <disabled><%= @config['rootcheck']['disabled'] ? 'yes' : 'no' %></disabled>
@@ -75,6 +84,34 @@
 
     <java_path><%= @config['wodle']['cis-cat']['java_path'] %></java_path>
     <ciscat_path><%= @config['wodle']['cis-cat']['ciscat_path'] %></ciscat_path>
+  </wodle>
+
+  <!-- System Inventory -->
+  <wodle name="syscollector">
+    <disabled><%= @config['wodle']['syscollector']['disabled'] ? 'yes' : 'no' %></disabled>
+    <interval><%= @config['wodle']['syscollector']['interval'] %></interval>
+    <scan_on_start><%= @config['wodle']['syscollector']['scan_on_start'] ? 'yes' : 'no' %></scan_on_start>
+    <hardware><%= @config['wodle']['syscollector']['hardware'] ? 'yes' : 'no' %></hardware>
+    <os><%= @config['wodle']['syscollector']['os'] ? 'yes' : 'no' %></os>
+    <network><%= @config['wodle']['syscollector']['network'] ? 'yes' : 'no' %></network>
+    <packages><%= @config['wodle']['syscollector']['packages'] ? 'yes' : 'no' %></packages>
+    <ports><%= @config['wodle']['syscollector']['ports'] ? 'yes' : 'no' %></ports>
+    <processes><%= @config['wodle']['syscollector']['processes'] ? 'yes' : 'no' %></processes>
+  </wodle>
+
+  <!-- OSQuery -->
+  <wodle name="osquery">
+    <disabled><%= @config['wodle']['osquery']['disabled'] ? 'yes' : 'no' %></disabled>
+    <run_daemon><%= @config['wodle']['osquery']['run_daemon'] ? 'yes' : 'no' %></run_daemon>
+    <% if @config['wodle']['osquery']['bin_path'] %>
+    <bin_path><%= @config['wodle']['osquery']['bin_path'] %></bin_path>
+    <% end %>
+    <log_path><%= @config['wodle']['osquery']['log_path'] %></log_path>
+    <config_path><%= @config['wodle']['osquery']['config_path'] %></config_path>
+    <add_labels><%= @config['wodle']['osquery']['add_labels'] ? 'yes' : 'no' %></add_labels>
+    <% if @config['wodle']['osquery']['pack'] %>
+    <pack><%= @config['wodle']['osquery']['pack'] %></pack>
+    <% end %>
   </wodle>
 
   <!-- File integrity monitoring -->
