@@ -21,6 +21,7 @@ if %w(debian ubuntu redhat centos).include? node['platform']
     execute 'wazuh_agent_auth' do
       command "/var/ossec/bin/agent-auth -m #{node['chef_wazuh']['agent']['server']}"
       action :nothing
+      only_if node['chef_wazuh']['agent']['register']
     end
 
     # Setup the package manager repositories

@@ -1,5 +1,6 @@
 default['chef_wazuh']['agent']['ossec_conf_path'] = '/var/ossec/etc/ossec.conf'
 default['chef_wazuh']['agent']['server'] = nil
+default['chef_wazuh']['agent']['register'] = true
 
 default['chef_wazuh']['agent']['ossec_config']['labels'] = nil
 
